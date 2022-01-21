@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./nine.css">
+</head>
+
+<body>
+    <!-- <div id="flexBox">
+        <div id="item">1</div>
+        <div id="item">2</div>
+        <div id="item">3</div>
+        <div id="item">4</div>
+        <div id="item">5</div>
+        <div id="item">6</div>
+        <div id="item">7</div>
+        <div id="item">8</div>
+        <div id="item">9</div>
+    </div> -->
+
+    <input id="upload" type="file" />
+    <button id="btn">upload<button>
+</body>
+<script>
+    window.onload = function () {
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            var input = document.getElementById('upload');
+            var file = input.files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            fetch({
+                url: '/upload',//此处写要传的地址
+                method: 'POST',
+                body: formData
+            }).then((d) => {
+                console.log('result is', d);
+                alert('上传完毕');
+            })
+        }
+    }
+</script>
+
+</html>

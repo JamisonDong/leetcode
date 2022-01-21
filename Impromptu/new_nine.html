@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            list-style: none;
+            width: 170px;
+            height: 170px;
+            padding-top: 5px;
+            padding-right: 5px;
+            background: blue;
+            /*
+                把padding-top和padding-right也计算在width和height中
+            */
+            box-sizing: border-box;
+        }
+
+        .box {
+            float: left;
+            width: 50px;
+            height: 50px;
+            /* border: 5px solid blue; */
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            background-color: white;
+            margin-left: 5px;
+            margin-bottom: 5px;
+
+        }
+
+        li.box:hover {
+            box-shadow: 0 0 0 5px red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="container">
+        <li class="box">1</li>
+        <li class="box">2</li>
+        <li class="box">3</li>
+        <li class="box">4</li>
+        <li class="box">5</li>
+        <li class="box">6</li>
+        <li class="box">7</li>
+        <li class="box">8</li>
+        <li class="box">9</li>
+    </ul>
+</body>
+
+</html>
