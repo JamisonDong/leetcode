@@ -1,3 +1,3 @@
 # leetcode
-js for leetcode study 剑指offer 
+js for leetcode study 
 js刷题
