@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+</head>
+
+<body>
+  <div>描述
+    请补全JavaScript代码，要求如下：
+    1. 给"ul"标签添加点击事件
+    2. 当点击某"li"标签时，该标签内容拼接"."符号。如：某"li"标签被点击时，该标签内容为".."
+    注意：
+    1. 必须使用DOM0级标准事件（onclick）
+
+    <div style="color:brown">
+      target表示当前触发事件的元素
+      currentTarget是绑定处理函数的元素
+      只有当事件处理函数绑定在自身的时候，target才会和currentTarget一样
+    </div>
+
+  </div>
+  <ul>
+    <li>.</li>
+    <li>.</li>
+    <li>.</li>
+  </ul>
+
+  <script type="text/javascript">
+    const ul = document.querySelector('ul')
+    ul.onclick = function(e){
+      e.target.innerText += '.'
+    }
+  </script>
+</body>
+
+</html>

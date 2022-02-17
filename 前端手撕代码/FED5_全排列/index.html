@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+</head>
+
+<body>
+  <!-- 请补全JavaScript代码，要求以数组的形式返回字符串参数的所有排列组合。
+注意：
+1. 字符串参数中的字符无重复且仅包含小写字母
+2. 返回的排列组合数组不区分顺序 -->
+  <script type="text/javascript">
+    const _permute = string => {
+      // 补全代码
+      if (string.length === 1) {
+        return [string]
+      }
+      let res = []
+      for (let i of string) {
+        const arr = string.split('').filter(str => str !== i)
+        _permute(arr.join('')).forEach(item => {
+          res.push(i + item)
+        })
+      }
+      return res
+    }
+  </script>
+</body>
+
+</html>
