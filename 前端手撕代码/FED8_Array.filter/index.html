@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    // 补全代码
+    Array.prototype._filter = function(fn,_this=this){
+      let res = []
+      for(let i in this){
+        if(fn.call(arguments[1],this[i],i,this)){
+          res.push(this[i])
+        }
+      }
+      return res
+    }
+  </script>
+</body>
+
+</html>

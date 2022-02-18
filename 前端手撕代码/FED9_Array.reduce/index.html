@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+    </head>
+    <body>
+    	
+        <script type="text/javascript">
+            // 补全代码
+            Array.prototype._reduce = function(){
+              let array = this
+              let callback = arguments[0]
+              let startIndex = arguments.length>=2 ? 0 : 1
+              let res = startIndex===0 ? arguments[1] : array[0]
+              for(let i = startIndex;i<array.length;i++){
+                res = callback(res,array[i],i,array)
+              }
+              return res
+            }
+        </script>
+    </body>
+</html>

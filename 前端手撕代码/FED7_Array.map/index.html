@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    // 补全代码
+    Array.prototype._map = function (fn) {
+      if (typeof fn !== 'function') return;
+      let res = []
+      for (let i = 0; i < this.length; i++) {
+        res.push(fn(this[i]))
+      }
+      return res
+    }
+
+    // _this默认为本身
+    Array.prototype.myMap = function (fn, _this = this) {
+      let arr = []
+      // 遍历数组，循环对元素执行回调函数
+      for (let index in this) {
+        // 执行回调函数时绑定this，并将结果push进新数组
+        arr.push(fn.call(_this, this[index], index, this))
+      }
+      // 返回新数组
+      return arr
+    }
+  </script>
+</body>
+
+</html>
