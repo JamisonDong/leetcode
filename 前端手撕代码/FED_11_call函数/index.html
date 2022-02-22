@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+    </head>
+    <body>
+    	<!-- 根据题目要求，实现一个仿Function.call功能的"Function._call"函数，
+        该函数会临时修改内部this的指向并返回结果，核心步骤有：
+        参数默认为window
+        获取调用该方法的对象，将this赋给对象参数，可以任意命名
+        通过该对象参数临时调用函数并返回结果
+        最后删除对象参数的临时函数属性 
+      -->
+        <script type="text/javascript">
+            // 补全代码
+            Function.prototype._call = function(target=window){
+              target.fn = this
+              const result = target.fn([...arguments].shift())
+              delete target.fn
+              return result
+            }
+        </script>
+    </body>
+</html>

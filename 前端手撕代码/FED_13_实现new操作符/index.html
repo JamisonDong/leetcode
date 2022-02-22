@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8>
+    </head>
+    <body>
+    	<!-- 
+        步骤有：
+        创建一个新对象
+        获取函数参数
+        将新对象的原型对象和函数参数的原型连接起来
+        将新对象和参数传给构造器执行
+        如果构造器返回的不是对象，那么就返回第一个新对象
+      -->
+        <script type="text/javascript">
+            const _new = function(constructor) {
+                // 补全代码
+                const obj = {}
+                obj.__proto__ = constructor.prototype
+                constructor.call(obj)
+                return obj
+            }
+        </script>
+    </body>
+</html>
