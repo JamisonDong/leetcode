@@ -13,9 +13,9 @@ class PromiseM {
         this.status = 'rejected'
         this.msg = err
     }
-    then(fufilled, reject) {
+    then(fulfilled, reject) {
         if (this.status === 'fulfilled') {
-            fufilled(this.msg)
+            fulfilled(this.msg)
         }
         if (this.status === 'rejected') {
             reject(this.msg)
