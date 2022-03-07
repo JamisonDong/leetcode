@@ -31,5 +31,21 @@ var lengthOfLIS = function (nums) {
   return res
 }
 
+var lengthOfLIS = function (nums) {
+  const len = nums.length
+  if (len <= 1) return len
+  let dp = new Array(len).fill(1)
+  let res = 1
+  for (let i = 1; i < len; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[i] > nums[j]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1)
+      }
+    }
+    res = Math.max(res, dp[i])
+  }
+  return res
+}
+
 const nums = [10, 9, 2, 5, 3, 7, 101, 18]
 console.log(lengthOfLIS(nums));
