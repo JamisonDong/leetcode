@@ -13,7 +13,10 @@ var subsets = function (nums) {
 
   function backtracking(nums, startIndex) {
     res.push([...path])
-    
+    if (startIndex >= nums.length) {
+      return
+    }
+
     for (let i = startIndex; i < nums.length; i++) {
       path.push(nums[i])
       backtracking(nums, i + 1)
