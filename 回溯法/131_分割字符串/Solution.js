@@ -7,6 +7,8 @@
 var partition = function (s) {
   let res = []
   let path = []
+  // 加入记忆化
+  const memo = new Array(s.length).fill().map(() => new Array(s.length).fill())
   backtracking(0)
   return res
   function backtracking(i) {
@@ -15,22 +17,69 @@ var partition = function (s) {
       return
     }
     for (let j = i; j < s.length; j++) {
-      if (!isPalindrome(s, i, j)) continue
-      let str = s.substring(i, j + 1)
-      console.log(str);
-      path.push(str)
-      backtracking(j + 1)
-      path.pop()
+      if (memo[i][j] === false) continue
+      if (memo[i][j] || isPalindrome(s, i, j)) {
+        let str = s.substring(i, j + 1)
+        path.push(str)
+        backtracking(j + 1)
+        path.pop()
+      }
     }
   }
 
   function isPalindrome(s, start, end) {
     for (i = start, j = end; i < j; i++, j--) {
-      if (s[i] !== s[j]) return false
+      if (s[i] !== s[j]) {
+        memo[i][j] = false
+        return false
+      }
     }
+    memo[i][j] = true
     return true
   }
 };
 
-const s = "aab"
+
+// 结合动态规划
+var partition = function (s) {
+  const dp = new Array(s.length).fill().map(() => new Array(s.length).fill())
+  const res = []
+  // 状态方程
+  // base j == i s[i] == s[j]
+  // j - i = 1 s[i] == s[j]
+  // j - i > 1 s[i] == s[j] && dp[i+1][j-1] = true
+
+  for (let j = 0; j < s.length; j++) {
+    for (let i = 0; i <= j; i++) {
+      if (i === j) {
+        dp[i][j] = 1
+      } else if (j - i === 1 && s[i] === s[j]) {
+        dp[i][j] = 1
+      } else if (j - i > 1 && s[i] === s[j] && dp[i + 1][j - 1]) {
+        dp[i][j] = 1
+      } else {
+        dp[i][j] = 0
+      }
+    }
+  }
+
+  function dfs(temp, start) {
+    if (start === s.length) {
+      res.push(temp.slice())
+      return
+    }
+    for (let i = start; i < s.length; i++) {
+      if (dp[start][i]) {
+        temp.push(s.substring(start, i + 1))
+        dfs(temp, i + 1)
+        temp.pop()
+      }
+    }
+  }
+  dfs([], 0)
+  return res
+};
+
+
+const s = "efe"
 console.log(partition(s));
