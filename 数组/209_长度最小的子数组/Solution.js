@@ -5,21 +5,40 @@
  */
 
 var minSubArrayLen = function (target, nums) {
-    // 长度计算一次
     const len = nums.length;
-    let l = (r = sum = 0),
-        res = len + 1; // 子数组最大不会超过自身
-    while (r < len) {
-        sum += nums[r++];
-        // 窗口滑动
-        while (sum >= target) {
-            // r始终为开区间 [l, r)
-            res = res < r - l ? res : r - l;
-            sum -= nums[l++];
+    let left = 0,
+        right = 0,
+        res = len + 1;
+    let sum = 0;
+    while (right < len) {
+        sum += nums[right];
+        if (sum >= target) {
+            res = Math.min(res, right - left + 1);
+            sum -= nums[left++];
         }
+        right++;
     }
-    return res > len ? 0 : res;
+    return res === len + 1 ? 0 : res;
 };
 let target = 7,
     nums = [7, 1, 1, 1, 7];
 console.log(minSubArrayLen(target, nums));
+
+// ts
+/* function minSubArrayLen(target: number, nums: number[]): number {
+    let left: number = 0, right: number = 0;
+    let res: number = nums.length + 1;
+    let sum: number = 0;
+    while (right < nums.length) {
+        sum += nums[right];
+        if (sum >= target) {
+            // 不断移动左指针，直到不能再缩小为止
+            while (sum - nums[left] >= target) {
+                sum -= nums[left++];
+            }
+            res = Math.min(res, right - left + 1);
+        }
+        right++;
+    }
+    return res === nums.length + 1 ? 0 : res;
+}; */
