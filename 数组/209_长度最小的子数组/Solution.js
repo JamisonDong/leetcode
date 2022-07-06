@@ -13,15 +13,17 @@ var minSubArrayLen = function (target, nums) {
     while (right < len) {
         sum += nums[right];
         if (sum >= target) {
+            while (sum - nums[left] >= target) {
+                sum -= nums[left++];
+            }
             res = Math.min(res, right - left + 1);
-            sum -= nums[left++];
         }
         right++;
     }
     return res === len + 1 ? 0 : res;
 };
 let target = 7,
-    nums = [7, 1, 1, 1, 7];
+    nums = [2, 3, 1, 2, 4, 3];
 console.log(minSubArrayLen(target, nums));
 
 // ts
