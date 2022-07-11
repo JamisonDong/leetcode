@@ -18,7 +18,7 @@ var totalFruit = function (fruits) {
                 arr[1] = fruits[right];
             }
         }
-
+        //如果进来了一种新的类型的水果 更新前一种水果的位置
         if(fruits[right]!== fruits[front]){
             front = right;
         }
