@@ -55,3 +55,50 @@ const merge = (head1, head2) => {
     }
     return dummyHead.next;
 };
+
+// 自底向上归并排序
+var sortList = function (head) {
+    if (head === null) {
+        return head;
+    }
+    let length = 0;
+    let node = head;
+    // 计算链表长度
+    while (node !== null) {
+        length++;
+        node = node.next;
+    }
+    const dummyHead = new ListNode(0, head);
+    for (let subLength = 1; subLength < length; subLength <<= 1) {
+        let prev = dummyHead,
+            curr = dummyHead.next;
+        while (curr !== null) {
+            let head1 = curr;
+            for (let i = 1; i < subLength && curr.next !== null; i++) {
+                curr = curr.next;
+            }
+            let head2 = curr.next;
+            curr.next = null;
+            curr = head2;
+            for (
+                let i = 1;
+                i < subLength && curr != null && curr.next !== null;
+                i++
+            ) {
+                curr = curr.next;
+            }
+            let next = null;
+            if (curr !== null) {
+                next = curr.next;
+                curr.next = null;
+            }
+            const merged = merge(head1, head2);
+            prev.next = merged;
+            while (prev.next !== null) {
+                prev = prev.next;
+            }
+            curr = next;
+        }
+    }
+    return dummyHead.next;
+};
