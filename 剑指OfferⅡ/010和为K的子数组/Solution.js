@@ -1,27 +1,22 @@
 var subarraySum = function (nums, k) {
-  let len = nums.length;
-  let res = 0;
-  let left = 0,
-    right = 0;
-  let sum = 0;
-  while (right < len) {
-    sum += nums[right];
-    if (sum === k) {
-      res++;
+  let count = 0;
+  let map = new Map();
+  let pre = 0;
+  for (let num of nums) {
+    pre += num;
+    if (pre === k) {
+      count++;
     }
-    if (sum !== k) {
-      while (sum !== k && left < right) {
-        sum -= nums[left];
-        left++;
-        if (sum === k) {
-          res++;
-        }
-      }
+    if (map.has(pre - k)) {
+      count += map.get(pre - k);
     }
-    right++;
+    if (map.get(pre)) {
+      map.set(pre, map.get(pre) + 1);
+    } else {
+      map.set(pre, 1);
+    }
   }
-
-  return res;
+  return count;
 };
 
 const nums = [1, 2, 3],
