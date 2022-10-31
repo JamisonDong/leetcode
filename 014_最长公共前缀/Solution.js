@@ -2,19 +2,19 @@
  * @param {string[]} strs
  * @return {string}
  */
- var longestCommonPrefix = function(strs) {
-    if(strs.length == 0) 
+var longestCommonPrefix = function (strs) {
+    if (strs.length == 0)
         return "";
     let str = strs[0];
     for (let i = 1; i < strs.length; i++) {
         let j = 0;
-        for (; j< str.length && j < strs[i].length; j++) {
-            if(str[j] != strs[i][j]){
+        for (; j < str.length && j < strs[i].length; j++) {
+            if (str[j] != strs[i][j]) {
                 break;
             }
         }
-        str = str.substr(0,j);
-        if(str === "") return str;
+        str = str.substr(0, j);
+        if (str === "") return str;
     }
     return str;
 };
@@ -38,4 +38,4 @@
 
 
 
-console.log(longestCommonPrefix(["flower","flow","flight"]));
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));
