@@ -14,18 +14,23 @@
 
 
 const getMinMeetingRoom = function (meetings) {
-  if (meetings.length === 0) return 0
-  meetings.sort((a, b) => {
-    return a[0] - b[0]
-  })
-  let res = 1
-  let endTime = meetings[0][1]
-  for (let i = 1; i < meetings.length; i++) {
-    if (meetings[i][0] < endTime) {
-      res++
-    }
-    endTime = meetings[i][1];
+  if (meetings.length === 0) return 0;
+  let nums = []
+  for (const [start, end] of meetings) {
+    nums.push([start, 1]);
+    nums.push([end, -1]);
   }
+  nums.sort((a, b) => {
+    return a[0] === b[0] ? a[1] - b[1] : a[0] - b[0];
+  })
+  console.log(nums);
+  let cur = 0, res = 0;
+  for (const [time, flag] of nums) {
+    cur += flag;
+
+    res = Math.max(cur, res)
+  }
+
   return res
 }
 
