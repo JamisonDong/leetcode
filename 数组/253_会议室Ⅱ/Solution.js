@@ -14,21 +14,21 @@
 
 
 const getMinMeetingRoom = function (meetings) {
-  if(meetings.length === 0) return 0
+  if (meetings.length === 0) return 0
   meetings.sort((a, b) => {
     return a[0] - b[0]
   })
   let res = 1
   let endTime = meetings[0][1]
   for (let i = 1; i < meetings.length; i++) {
-    if (meetings[i][0] < endTime){
+    if (meetings[i][0] < endTime) {
       res++
     }
-    endTime = meetings[i][1]
+    endTime = meetings[i][1];
   }
   return res
 }
 
 
-var meetings = [[7,10],[2,4]]
+var meetings = [[0, 30], [5, 10], [15, 20]]
 console.log(getMinMeetingRoom(meetings));
