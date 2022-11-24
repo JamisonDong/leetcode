@@ -9,7 +9,7 @@ var permute = function (nums) {
   const res = []
   const path = []
 
-  function backtracking(nums, used) {
+  function backtracking (nums, used) {
     if (path.length === nums.length) {
       res.push([...path])
       return
